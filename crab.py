@@ -48,7 +48,7 @@ def load_test_data(data_file):
 def read_user_name(input_file):
     f_r = open(input_file)
     for line in f_r:
-        name = line.split(',')
+        name = line.split(',')[0]
         return name
 
 '''
