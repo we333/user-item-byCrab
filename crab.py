@@ -17,7 +17,7 @@ class Bunch(dict):
 def load_test_data(data_file):
     #Read data
     data_m = np.loadtxt(data_file,
-                delimiter=';', dtype=str)
+                delimiter=',', dtype=str)
     item_ids = []
     user_order_nums = []
     data_songs = {}
@@ -62,7 +62,7 @@ def userName_to_userOrderNum(data_file, user_name):
     curr_order = 1
     f_r = open(data_file, 'r')
     for line in f_r:
-        user = line.split(';')[0]
+        user = line.split(',')[0]
         if user not in recommend_id:
             recommend_id[user] = curr_order
             curr_order += 1
@@ -84,7 +84,7 @@ def productOrderNum_to_productName(data_file, product_order_num):
     curr_order = 1
     f_r = open(data_file, 'r')
     for line in f_r:
-        product_name = line.split(';')[1]
+        product_name = line.split(',')[1]
         if product_name not in product_id:
             product_id[product_name] = curr_order;
             curr_order += 1
