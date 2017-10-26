@@ -41,18 +41,15 @@ def load_test_data(data_file):
         data_u.append((no + 1, user_order_num))
     data_users = dict(data_u)
 
-    fdescr = open('./test_data.rst')
-
     return Bunch(data=data_songs, item_ids=data_titles,
-                 user_order_nums=data_users, DESCR=fdescr.read())
+                 user_order_nums=data_users)
 
 # 读取input_file文件中的[用户名x]
 def read_user_name(input_file):
     f_r = open(input_file)
-#    for line in f_r:
-#        name = line.split('\0')
-#        return name
-    return 'A'
+    for line in f_r:
+        name = line.split(',')
+        return name
 
 '''
     通过读取data_file,判断user_name在csv文件里[出现的次序n]
