@@ -116,6 +116,8 @@ def user_base(input_file, output_file, data_file):
     recommender = UserBasedRecommender(model, similarity, with_preference=True)
     ret = recommender.recommend(user_order_num)	# 输出个结果看看效果 Recommend items for the user 5 (Toby)
 
+    print (ret)
+
     # 所有推荐结果都保存到文件，交给服务器处理
     f_w = open(output_file, 'w')
     for i in ret:
