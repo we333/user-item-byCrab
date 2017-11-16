@@ -115,15 +115,13 @@ def user_base(input_file, output_file, data_file):
     from scikits.crab.recommenders.knn import UserBasedRecommender
     recommender = UserBasedRecommender(model, similarity, with_preference=True)
     ret = recommender.recommend(user_order_num)	# 输出个结果看看效果 Recommend items for the user 5 (Toby)
-    print ret
 
-    if ret: # 因为数据量过少,只有在[得到推荐结果]时才能写入output_file
-        product_order_num = ret[0][0]
-        product_score = ret[0][1]
-
+    # 所有推荐结果都保存到文件，交给服务器处理
+    f_w = open(output_file, 'w')
+    for i in ret:
+        product_order_num = i[0]
+        product_score = i[1]
         product_name = productOrderNum_to_productName(data_file, product_order_num)
-
-        f_w = open(output_file, 'w')
         f_w.write(str(product_name) + ',' + str(product_score) + '\n')
 
 	# 选择 基于Item 的推荐(同样的基础数据，选择角度不同)
