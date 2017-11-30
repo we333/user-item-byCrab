@@ -107,9 +107,10 @@ def user_base(input_file, output_file, data_file):
 
     #Build the similarity
     # 选用算法 pearson_correlation
-    from scikits.crab.metrics import pearson_correlation
+#    from scikits.crab.metrics import pearson_correlation # need score
+    from scikits.crab.metrics import cosine_distances   # DO NOT need score
     from scikits.crab.similarities import UserSimilarity
-    similarity = UserSimilarity(model, pearson_correlation)
+    similarity = UserSimilarity(model, cosine_distances)
 
     # 选择 基于User的推荐
     from scikits.crab.recommenders.knn import UserBasedRecommender
